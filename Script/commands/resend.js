@@ -18,7 +18,7 @@ module.exports.handleEvent = async function({
   threadID: u,
   body: c
  } = e;
- global.logMessage  (global.logMessage = new Map), global.data.botID  (global.data.botID = a.getCurrentUserID());
+ global.logMessage || (global.logMessage = new Map), global.data.botID || (global.data.botID = a.getCurrentUserID());
  const i = global.data.threadData.get(u) || {};
  if ((void 0 === i.resend || 0 != i.resend) && l != global.data.botID && ("message_unsend" != e.type && global.logMessage.set(g, {
    msgBody: c,
@@ -27,10 +27,10 @@ module.exports.handleEvent = async function({
   var m = global.logMessage.get(g);
   if (!m) return;
   let e = await s.getNameUser(l);
-  if (null == m.attachment[0]) return a.sendMessage(╭──────•◈•───────╮\n         @Nk Naiem Khan       \n\nকই গো সবাই দেখুন🥺 ,@${e} এই লুচ্ছায় মাত্র👉 \"${m.msgBody}\"👈এই টেক্সট টা রিমুভ দিছে😁\n\n    BOT OWNER NAIEMッ\n╰──────•◈•───────╯, u); {
+  if (null == m.attachment[0]) return a.sendMessage(`╭──────•◈•───────╮\n         𝗜𝘀𝗹𝗮𝗺𝗶𝗰𝗸 𝗰𝗵𝗮𝘁 𝗯𝗼𝘁       \n\nকই গো সবাই দেখুন🥺 ,@${e} এই লুচ্ছায় মাত্র👉 \"${m.msgBody}\"👈এই টেক্সট টা রিমুভ দিছে😁\n\n  BOT OWNER Naiem ッ\n╰──────•◈•───────╯`, u); {
    let t = 0,
     s = {
-     body: @${e}এই হালায় এই মাত্র এইডা রিমুভ দিছে🍁😒 সবাই দেখে নেও🐸😁${""!=m.msgBody?\n\nContent: ${m.msgBody}:""},
+     body: `@${e}এই হালায় এই মাত্র এইডা রিমুভ দিছে🍁😒 সবাই দেখে নেও🐸😁${""!=m.msgBody?`\n\nContent: ${m.msgBody}`:""}`,
      attachment: [],
      mentions: {
       tag: e,
@@ -41,7 +41,7 @@ module.exports.handleEvent = async function({
     t += 1;
     var h = (await n.get(f.url)).uri.pathname,
      b = h.substring(h.lastIndexOf(".") + 1),
-     p = __dirname + /cache/${t}.${b},
+     p = __dirname + `/cache/${t}.${b}`,
      y = (await o.get(f.url, {
       responseType: "arraybuffer"
      })).data;
@@ -74,5 +74,5 @@ module.exports.handleEvent = async function({
  let d = (await t.getData(n)).data;
  return void 0 === d.resend || 0 == d.resend ? d.resend = !0 : d.resend = !1, await t.setData(n, {
   data: d
- }), global.data.threadData.set(n, d), e.sendMessage(${1==d.resend?s("on"):s("off")} ${s("successText")}, n, o)
+ }), global.data.threadData.set(n, d), e.sendMessage(`${1==d.resend?s("on"):s("off")} ${s("successText")}`, n, o)
 };
